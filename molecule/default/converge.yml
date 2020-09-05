@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include jinopl.fail2ban"
+      include_role:
+        name: "jinopl.fail2ban"

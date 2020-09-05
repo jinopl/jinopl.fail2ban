@@ -1,0 +1,15 @@
+- name: install epel repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: install fail2ban
+  yum:
+    name: fail2ban
+    state: present
+
+- name: Enable fail2ban service
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
