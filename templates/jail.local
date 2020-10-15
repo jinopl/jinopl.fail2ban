@@ -1,0 +1,8 @@
+[sshd]
+enabled = true
+banaction = iptables-multiport
+maxretry = {{ maxretry }}
+findtime = {{ findtime }}
+bantime = {{ bantime }}
+logpath = %(sshd_log)s
+backend = systemd

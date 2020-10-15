@@ -7,3 +7,13 @@
 - name: Run when os Debian family
   include: debian.yml
   when: ansible_facts['os_family'] == "Debian"
+
+
+- name: Adding local conf to configuration
+  template:
+    src: jail.local
+    dest: /etc/fail2ban/jail.local
+  notify: restart fail2ban
+
+
+
