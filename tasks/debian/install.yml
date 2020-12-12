@@ -2,9 +2,5 @@
   apt:
     name: fail2ban
     state: present
-  
-- name: Enable fail2ban service
-  service:
-    name: fail2ban
-    state: started
-    enabled: yes
+    update_cache: yes
+  notify: restart fail2ban

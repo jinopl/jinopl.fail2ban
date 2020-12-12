@@ -1,4 +1,9 @@
 ---
 # defaults file for jinopl.fail2ban
+####Commmon things########
+bantime: 3600
+bantime : 10
+findtime : 43200
+maxretry: 5
 
-bantime: '3600'
+
