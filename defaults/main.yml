@@ -1,2 +1,4 @@
 ---
 # defaults file for jinopl.fail2ban
+
+bantime: '3600'
