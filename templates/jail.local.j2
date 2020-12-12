@@ -7,3 +7,7 @@ banaction = iptables-multiport
 
 [sshd]
 enabled = true
+maxretry = {{ maxretry }}
+findtime = {{ findtime }}
+logpath = %(sshd_log)s
+backend = systemd
