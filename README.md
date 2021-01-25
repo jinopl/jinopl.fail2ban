@@ -8,7 +8,7 @@ Requirements
 
 Role Variables
 --------------
-- [default ](https://github.com/jinopl/jinopl.webserver/blob/master/defaults/main.yml "default ") Please look into this file , change accordingly. 
+- [default ](https://github.com/jinopl/jinopl.fail2ban/tree/master/defaults "default ") Please look into this file , change accordingly. 
 
 
 Example Playbook
