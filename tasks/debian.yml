@@ -5,7 +5,7 @@
       - Hostname is {{ ansible_hostname }}
 
 
-- include: debian/install.yml
+- include_tasks: debian/install.yml
 
 - name: Configuring fail2ban
   template:

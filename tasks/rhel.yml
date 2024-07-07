@@ -4,7 +4,7 @@
       - Hello from  {{ ansible_distribution }} {{ ansible_distribution_version }}
       - Hostname is {{ ansible_hostname }}
 
-- include: rhel/install.yml
+- include_tasks: rhel/install.yml
 
 - name: Configuring fail2ban
   template:
