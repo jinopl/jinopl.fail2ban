@@ -16,8 +16,21 @@ chain = INPUT
 {% for jail, cfg in fail2ban_jails.items() %}
 [{{ jail }}]
 enabled  = {{ cfg.enabled | ternary('true', 'false') }}
+{% if 'port' in cfg %}
 port     = {{ cfg.port }}
+{% endif %}
 filter   = {{ cfg.filter }}
 logpath  = {{ cfg.logpath }}
+{% if 'maxretry' in cfg %}
 maxretry = {{ cfg.maxretry }}
+{% endif %}
+{% if 'findtime' in cfg %}
+findtime = {{ cfg.findtime }}
+{% endif %}
+{% if 'bantime' in cfg %}
+bantime  = {{ cfg.bantime }}
+{% endif %}
+{% if 'action' in cfg %}
+action   = {{ cfg.action }}
+{% endif %}
 {% endfor %}
