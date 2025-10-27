@@ -17,23 +17,27 @@ fail2ban_jails:
     filter: sshd
     logpath: /var/log/auth.log
     maxretry: "{{ fail2ban_maxretry }}"
+    journalmatch: _SYSTEMD_UNIT=sshd.service
   apache-auth:
     enabled: true
     port: http,https
     filter: apache-auth
     logpath: /var/log/apache2/*error.log
+    journalmatch: _SYSTEMD_UNIT=apache2.service
     maxretry: 3
   apache-badbots:
     enabled: true
     port: http,https
     filter: apache-badbots
     logpath: /var/log/apache2/*access.log
+    journalmatch: _SYSTEMD_UNIT=apache2.service
     maxretry: 1
   apache-noscript:
     enabled: true
     port: http,https
     filter: apache-noscript
     logpath: /var/log/apache2/*error.log
+    journalmatch: _SYSTEMD_UNIT=apache2.service
     maxretry: 2
   recidive:
     enabled: true
