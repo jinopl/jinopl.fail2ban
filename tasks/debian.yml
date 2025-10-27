@@ -11,5 +11,6 @@
   template:
     src: jail.local.j2
     dest: /etc/fail2ban/jail.local
-    force: yes
+    force: no
+    validate: '/usr/bin/fail2ban-client -d -f %s'
   notify: restart fail2ban
