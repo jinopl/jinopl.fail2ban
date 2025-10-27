@@ -35,3 +35,11 @@ fail2ban_jails:
     filter: apache-noscript
     logpath: /var/log/apache2/*error.log
     maxretry: 2
+  recidive:
+    enabled: true
+    filter: recidive
+    logpath: /var/log/fail2ban.log
+    maxretry: 10          # if banned 5 times
+    bantime: -1          # -1 = permanent ban
+    findtime: 1w         # within one week
+    action: "%(action_)s"
