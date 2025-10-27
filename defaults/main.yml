@@ -1,8 +1,37 @@
 ---
 # defaults file for jinopl.fail2ban
-####Commmon things########
-bantime : 3000
-findtime : 43200
-maxretry: 5
+fail2ban_bantime: 1h
+fail2ban_findtime: 10m
+fail2ban_maxretry: 5
 
+fail2ban_ignoreip: "127.0.0.1/8 ::1"
+fail2ban_action: "%(action_mwl)s"  # ban + mail + whois + logs
+fail2ban_loglevel: INFO
+fail2ban_logtarget: /var/log/fail2ban.log
 
+# Jails to enable
+fail2ban_jails:
+  sshd:
+    enabled: true
+    port: ssh
+    filter: sshd
+    logpath: /var/log/auth.log
+    maxretry: "{{ fail2ban_maxretry }}"
+  apache-auth:
+    enabled: true
+    port: http,https
+    filter: apache-auth
+    logpath: /var/log/apache2/*error.log
+    maxretry: 3
+  apache-badbots:
+    enabled: true
+    port: http,https
+    filter: apache-badbots
+    logpath: /var/log/apache2/*access.log
+    maxretry: 1
+  apache-noscript:
+    enabled: true
+    port: http,https
+    filter: apache-noscript
+    logpath: /var/log/apache2/*error.log
+    maxretry: 2
