@@ -21,6 +21,9 @@ port     = {{ cfg.port }}
 {% endif %}
 filter   = {{ cfg.filter }}
 logpath  = {{ cfg.logpath }}
+{% if 'journalmatch' in cfg %}
+journalmatch = {{ cfg.journalmatch }}
+{% endif %}
 {% if 'maxretry' in cfg %}
 maxretry = {{ cfg.maxretry }}
 {% endif %}
