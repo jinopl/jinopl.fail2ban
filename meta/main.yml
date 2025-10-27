@@ -1,5 +1,6 @@
 galaxy_info:
-  author: Jino pl
+  author: Jino P L
+  role_name: fail2ban
   description: DevOps
   license: MIT
   min_ansible_version: 2.9
