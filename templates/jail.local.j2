@@ -1,13 +1,23 @@
 [DEFAULT]
-# Ban hosts for one hour:
-bantime = {{ bantime }}
+bantime  = {{ fail2ban_bantime }}
+findtime  = {{ fail2ban_findtime }}
+maxretry = {{ fail2ban_maxretry }}
+ignoreip = {{ fail2ban_ignoreip }}
 
-# Override /etc/fail2ban/jail.d/00-firewalld.conf:
-banaction = iptables-multiport
+action = {{ fail2ban_action }}
+loglevel = {{ fail2ban_loglevel }}
+logtarget = {{ fail2ban_logtarget }}
 
-[sshd]
-enabled = true
-maxretry = {{ maxretry }}
-findtime = {{ findtime }}
-logpath = %(sshd_log)s
+# General recs
 backend = systemd
+usedns = warn
+chain = INPUT
+
+{% for jail, cfg in fail2ban_jails.items() %}
+[{{ jail }}]
+enabled  = {{ cfg.enabled | ternary('true', 'false') }}
+port     = {{ cfg.port }}
+filter   = {{ cfg.filter }}
+logpath  = {{ cfg.logpath }}
+maxretry = {{ cfg.maxretry }}
+{% endfor %}
