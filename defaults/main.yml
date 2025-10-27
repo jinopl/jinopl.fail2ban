@@ -5,7 +5,7 @@ fail2ban_findtime: 10m
 fail2ban_maxretry: 5
 
 fail2ban_ignoreip: "127.0.0.1/8 ::1"
-fail2ban_action: "%(action_mwl)s"  # ban + mail + whois + logs
+fail2ban_action: "%(action_)s"
 fail2ban_loglevel: INFO
 fail2ban_logtarget: /var/log/fail2ban.log
 
